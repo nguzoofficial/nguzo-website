@@ -10,9 +10,9 @@
   <!-- Home — English (default) -->
   <url>
     <loc>https://nguzo.netlify.app/</loc>
-    <xhtml:link rel="alternate" hreflang="en"      href="https://nguzo.netlify.app/"/>
-    <xhtml:link rel="alternate" hreflang="fr"      href="https://nguzo.netlify.app/?lang=fr"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://nguzo.netlify.app/"/>
+    <xhtml:link rel="alternate" hreflang="en"      href="https://nguzo.tech/"/>
+    <xhtml:link rel="alternate" hreflang="fr"      href="https://nguzo.tech/?lang=fr"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nguzo.tech/"/>
     <lastmod>2026-04-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
@@ -21,8 +21,8 @@
   <!-- Terms of Use -->
   <url>
     <loc>https://nguzo.netlify.app/terms</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://nguzo.netlify.app/terms"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://nguzo.netlify.app/terms"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nguzo.tech/terms"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://nguzo.tech/terms"/>
     <lastmod>2026-04-15</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
@@ -31,8 +31,8 @@
   <!-- Privacy Policy -->
   <url>
     <loc>https://nguzo.netlify.app/privacy</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://nguzo.netlify.app/privacy"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://nguzo.netlify.app/privacy"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nguzo.tech/privacy"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://nguzo.tech/privacy"/>
     <lastmod>2026-04-15</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
