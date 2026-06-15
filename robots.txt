@@ -1,8 +1,7 @@
 # robots.txt — Nguzo
-# Replace nguzo.netlify.app with your actual domain before going live.
 
 User-agent: *
 Allow: /
 
-Sitemap: https://nguzo.netlify.app/sitemap.xml
+Sitemap: https://nguzo.tech/sitemap.xml
  
