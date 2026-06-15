@@ -3,5 +3,5 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://nguzo.tech/sitemap.xml
+Sitemap: https://nguzo.app/sitemap.xml
  
