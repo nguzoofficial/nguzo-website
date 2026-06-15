@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="fr" data-lang="fr">
+<head> 
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  <!-- ============================================================
+       SEO META
+       Domain placeholder: nguzo.netlify.app
+       Replace with your actual domain before going live.
+  ============================================================ -->
+  <title>Nguzo — Your Neighborhood Marketplace</title>
+  <meta name="description" content="Nguzo connects buyers and sellers in the same neighborhood. Post a listing, message directly, meet in person. No fees, no shipping, no middlemen." />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Nguzo" />
+
+  <link rel="canonical" href="https://nguzo.netlify.app/" />
+  <link rel="alternate" hreflang="en" href="https://nguzo.netlify.app/" />
+  <link rel="alternate" hreflang="fr" href="https://nguzo.netlify.app/?lang=fr" />
+  <link rel="alternate" hreflang="x-default" href="https://nguzo.netlify.app/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type"        content="website" />
+  <meta property="og:url"         content="https://nguzo.netlify.app/" />
+  <meta property="og:title"       content="Nguzo — Your Neighborhood Marketplace" />
+  <meta property="og:description" content="Browse nearby listings. Message sellers directly. Meet in person. Burundi's local marketplace." />
+  <meta property="og:image"       content="https://nguzo.netlify.app/images/app-feed.png" />
+  <meta property="og:locale"      content="fr_FR" />
+  <meta property="og:locale:alternate" content="en_US" />
+  <meta property="og:site_name"   content="Nguzo" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card"        content="summary_large_image" />
+  <meta name="twitter:title"       content="Nguzo — Your Neighborhood Marketplace" />
+  <meta name="twitter:description" content="Browse nearby listings. Message sellers directly. Meet in person." />
+  <meta name="twitter:image"       content="https://nguzo.netlify.app/images/app-feed.png" />
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Nguzo",
+    "applicationCategory": "ShoppingApplication",
+    "operatingSystem": "Android",
+    "description": "Hyper-local peer-to-peer marketplace for Burundi. Post listings, message sellers, meet in person.",
+    "inLanguage": ["fr", "rn", "sw", "en"],
+    "url": "https://nguzo.netlify.app/",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Nguzo",
+      "address": { "@type": "PostalAddress", "addressLocality": "Bujumbura", "addressCountry": "BI" },
+      "email": "nguzo.official@gmail.com"
+    },
+    "contactPoint": [
+      { "@type": "ContactPoint", "email": "support.nguzo@gmail.com",   "contactType": "customer support" },
+      { "@type": "ContactPoint", "email": "nguzo.official@gmail.com",  "contactType": "legal" }
+    ]
+  }
+  </script>
+
+  <!-- Font: Plus Jakarta Sans 400 + 600 + 700 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- Skip to main content (accessibility) -->
+<a href="#main" class="skip-link">
+  <span data-en="Skip to main content" data-fr="Passer au contenu principal">Skip to main content</span>
+</a>
+
+<!-- ==============================================================
+     NAVIGATION
+============================================================== -->
+<header class="site-header" id="site-header">
+  <nav class="nav" role="navigation" aria-label="Main navigation">
+    <div class="nav__inner container">
+
+      <!-- Logo -->
+      <a href="/" class="logo" aria-label="Nguzo — back to home">
+        <span class="logo__word">nguzo</span><span class="logo__dot">.</span>
+      </a>
+
+      <!-- Desktop links -->
+      <ul class="nav__links" role="list">
+        <li><a href="#how-it-works" class="nav__link" data-en="How it works"  data-fr="Comment ça marche">How it works</a></li>
+        <li><a href="#trust"        class="nav__link" data-en="Safety"        data-fr="Sécurité">Safety</a></li>
+        <li><a href="#about"        class="nav__link" data-en="About"         data-fr="À propos">About</a></li>
+        <li><a href="#contact"      class="nav__link" data-en="Contact"       data-fr="Contact">Contact</a></li>
+      </ul>
+
+      <!-- Right cluster -->
+      <div class="nav__right">
+        <div class="lang-switch" role="group" aria-label="Language / Langue">
+          <button class="lang-btn" id="btn-fr" aria-pressed="true" aria-label="Passer en français">FR</button>
+          <span aria-hidden="true" class="lang-sep">|</span>
+          <button class="lang-btn" id="btn-en" aria-pressed="false"  aria-label="Switch to English">EN</button>
+        </div>
+        <a href="https://play.google.com/store/apps/details?id=co.nguzo.app" target="_blank" rel="noopener noreferrer"
+           class="btn btn-primary" aria-label="Download Nguzo on Google Play">
+          <span data-en="Download" data-fr="Télécharger">Download</span>
+        </a>
+        <button class="burger" id="burger" aria-expanded="false" aria-controls="mobile-nav"
+                aria-label="Open navigation menu">
+          <span class="burger__bar"></span>
+          <span class="burger__bar"></span>
+        </button>
+      </div>
+
+    </div>
+  </nav>
+</header>
+
+<!-- Mobile overlay nav -->
+<div class="mobile-nav" id="mobile-nav" hidden role="dialog" aria-modal="true" aria-label="Mobile menu">
+  <div class="mobile-nav__panel">
+    <div class="mobile-nav__top">
+      <a href="/" class="logo" aria-label="Nguzo">
+        <span class="logo__word">nguzo</span><span class="logo__dot">.</span>
+      </a>
+      <button class="mobile-nav__close" id="mobile-close" aria-label="Close menu">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <nav aria-label="Mobile navigation">
+      <ul class="mobile-nav__links" role="list">
+        <li><a href="#how-it-works" class="mobile-nav__link" data-en="How it works"  data-fr="Comment ça marche">How it works</a></li>
+        <li><a href="#trust"        class="mobile-nav__link" data-en="Safety"        data-fr="Sécurité">Safety</a></li>
+        <li><a href="#about"        class="mobile-nav__link" data-en="About"         data-fr="À propos">About</a></li>
+        <li><a href="#contact"      class="mobile-nav__link" data-en="Contact"       data-fr="Contact">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="mobile-nav__foot">
+      <div class="lang-switch" role="group" aria-label="Language / Langue">
+        <button class="lang-btn" id="btn-fr-m" aria-pressed="true">FR</button>
+        <span aria-hidden="true" class="lang-sep">|</span>
+        <button class="lang-btn" id="btn-en-m" aria-pressed="false">EN</button>
+      </div>
+      <a href="https://play.google.com/store/apps/details?id=co.nguzo.app" target="_blank" rel="noopener noreferrer"
+         class="btn btn-primary btn-full"
+         data-en="Download the App" data-fr="Télécharger l'App">Download the App</a>
+    </div>
+  </div>
+</div>
+
+<!-- ==============================================================
+     MAIN
+============================================================== -->
+<main id="main">
+
+  <!-- ── HERO ────────────────────────────────────────────────── -->
+  <section class="hero" id="hero" aria-labelledby="hero-h1">
+    <!-- Ghost watermark -->
+    <div class="hero__watermark" aria-hidden="true">nguzo</div>
+
+    <div class="hero__inner container">
+      <div class="hero__text">
+        <p class="label reveal-fast"
+           data-en="Burundi"
+           data-fr="Burundi">Burundi</p>
+
+        <h1 class="hero__h1" id="hero-h1">
+          <span class="word-line" data-en="Your neighborhood,"  data-fr="Ton quartier,">Your neighborhood,</span>
+          <span class="word-line" data-en="your marketplace."   data-fr="ton marché.">your marketplace.</span>
+        </h1>
+
+        <p class="hero__sub reveal-stagger"
+           data-en="Browse what's nearby. Message the seller. Meet in person and pay in cash — no app fees, no delivery, no middlemen."
+           data-fr="Parcourez ce qui est à proximité. Contactez le vendeur. Rencontrez-vous en personne et payez en espèces — sans frais d'application, sans livraison, sans intermédiaires.">
+          Browse what's nearby. Message the seller. Meet in person and pay in cash — no app fees, no delivery, no middlemen.
+        </p>
+
+        <div class="hero__actions reveal-stagger">
+          <a href="https://play.google.com/store/apps/details?id=co.nguzo.app" target="_blank" rel="noopener noreferrer"
+             class="btn btn-primary btn-lg"
+             aria-label="Download Nguzo on Google Play">
+            <!-- Google Play icon -->
+            <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M3.18 23.76c.33.18.72.21 1.09.08l12.48-7.2-2.81-2.82L3.18 23.76z"/>
+              <path d="M22.2 10.39c-.43-.45-1.09-.6-1.69-.37L3.18.24C2.82.11 2.43.14 2.1.32L13.94 12z"/>
+              <path d="M2.1 23.68c.33.18.72.21 1.08.08L13.94 12 2.1.32C1.44.68 1 1.37 1 2.16v19.68c0 .79.44 1.48 1.1 1.84z"/>
+              <path d="M16.75 16.64l2.81 2.82 1.65-.95c.6-.35.96-.98.96-1.68v-1.53l-5.42 1.34z"/>
+            </svg>
+            <span data-en="Get it on Google Play" data-fr="Disponible sur Google Play">Get it on Google Play</span>
+          </a>
+          <a href="#how-it-works" class="btn btn-ghost btn-lg">
+            <span data-en="See how it works" data-fr="Voir comment ça marche">See how it works</span>
+            <svg aria-hidden="true" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Phone mockups -->
+      <div class="hero__phones" aria-label="App screenshots">
+        <div class="phone phone--back">
+          <div class="phone__body">
+            <img src="images/app-feed.png"
+                 alt="Nguzo app home feed listing nearby items in Buyenzi neighborhood"
+                 width="260" height="520" loading="eager" decoding="async" />
+          </div>
+        </div>
+        <div class="phone phone--front">
+          <div class="phone__body">
+            <img src="images/app-login.png"
+                 alt="Nguzo app sign-in screen: Le marché de votre quartier"
+                 width="260" height="520" loading="eager" decoding="async" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── HOW IT WORKS ─────────────────────────────────────────── -->
+  <section class="section section-hiw" id="how-it-works" aria-labelledby="hiw-title">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="label"
+           data-en="How it works"
+           data-fr="Comment ça marche">How it works</p>
+        <h2 id="hiw-title"
+            data-en="Three steps. That's it."
+            data-fr="Trois étapes. C'est tout.">Three steps. That's it.</h2>
+        <p class="section-sub"
+           data-en="The only action on any listing is &#34;Message the seller&#34; — no payment buttons, no cart, no checkout. That's intentional."
+           data-fr="La seule action sur une annonce est &#34;Discuter avec le vendeur&#34; — pas de bouton de paiement, pas de panier, pas de validation. C'est voulu.">
+          The only action on any listing is "Message the seller" — no payment buttons, no cart, no checkout. That's intentional.
+        </p>
+      </div>
+
+      <ol class="steps" role="list">
+        <li class="step reveal">
+          <div class="step__num" aria-hidden="true" data-n="01">01</div>
+          <div class="step__body">
+            <div class="step__icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            </div>
+            <h3 data-en="Browse or list nearby"
+                data-fr="Parcourir ou publier à proximité">Browse or list nearby</h3>
+            <p data-en="Items are sorted by distance from you, not by who paid to be first. Post what you're selling in under a minute."
+               data-fr="Les articles sont triés par distance, pas par ceux qui ont payé pour être en tête. Publiez ce que vous vendez en moins d'une minute.">
+              Items are sorted by distance from you, not by who paid to be first. Post what you're selling in under a minute.
+            </p>
+          </div>
+        </li>
+        <li class="step reveal reveal-d1">
+          <div class="step__num" aria-hidden="true" data-n="02">02</div>
+          <div class="step__body">
+            <div class="step__icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            </div>
+            <h3 data-en="Message the seller directly"
+                data-fr="Contacter le vendeur directement">Message the seller directly</h3>
+            <p data-en="Ask questions, agree on a price, choose a meeting spot. No phone numbers needed, no third party reads your conversation."
+               data-fr="Posez des questions, convenez d'un prix, choisissez un lieu de rencontre. Pas de numéro de téléphone requis, aucun tiers ne lit votre conversation.">
+              Ask questions, agree on a price, choose a meeting spot. No phone numbers needed, no third party reads your conversation.
+            </p>
+          </div>
+        </li>
+        <li class="step reveal reveal-d2">
+          <div class="step__num" aria-hidden="true" data-n="03">03</div>
+          <div class="step__body">
+            <div class="step__icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <h3 data-en="Meet safely, exchange in person"
+                data-fr="Rencontrez-vous en sécurité, échangez en personne">Meet safely, exchange in person</h3>
+            <p data-en="Pay in cash, inspect the item, take it home. Commerce the way it has always worked — between real people."
+               data-fr="Payez en espèces, inspectez l'article, repartez avec. Le commerce tel qu'il a toujours fonctionné — entre personnes réelles.">
+              Pay in cash, inspect the item, take it home. Commerce the way it has always worked — between real people.
+            </p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ── APP SHOWCASE (dark) ──────────────────────────────────── -->
+  <section class="section section-dark section-app" id="the-app" aria-labelledby="app-title">
+    <div class="container">
+      <div class="section-header section-header--light reveal">
+        <p class="label"
+           data-en="The App"
+           data-fr="L'Application">The App</p>
+        <h2 id="app-title"
+            data-en="Everything you need, nothing you don't."
+            data-fr="Tout ce qu'il faut, rien de superflu.">Everything you need, nothing you don't.</h2>
+      </div>
+
+      <div class="app-screens">
+        <figure class="app-screen reveal">
+          <div class="app-screen__frame">
+            <img src="images/app-feed.png"
+                 alt="Nguzo feed screen: list of nearby listings in Buyenzi with prices in BIF"
+                 width="280" height="560" loading="lazy" decoding="async" />
+          </div>
+          <figcaption data-en="Nearby listings" data-fr="Annonces à proximité">Nearby listings</figcaption>
+        </figure>
+
+        <figure class="app-screen app-screen--featured reveal reveal-d1">
+          <div class="app-screen__frame">
+            <img src="images/app-listing.png"
+                 alt="Listing detail: iron for 80,000 BIF in Buyenzi Kanzigiri, with chat button"
+                 width="280" height="560" loading="lazy" decoding="async" />
+          </div>
+          <figcaption data-en="Listing detail — the only action is to message" data-fr="Détail d'annonce — la seule action est de discuter">Listing detail — the only action is to message</figcaption>
+        </figure>
+
+        <figure class="app-screen reveal reveal-d2">
+          <div class="app-screen__frame">
+            <img src="images/app-profile.png"
+                 alt="User profile showing active listings and create listing button"
+                 width="280" height="560" loading="lazy" decoding="async" />
+          </div>
+          <figcaption data-en="Your listings" data-fr="Vos annonces">Your listings</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── TRUST & SAFETY ───────────────────────────────────────── -->
+  <section class="section section-trust" id="trust" aria-labelledby="trust-title">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="label"
+           data-en="Trust &amp; Safety"
+           data-fr="Confiance &amp; Sécurité">Trust &amp; Safety</p>
+        <h2 id="trust-title"
+            data-en="Built on trust."
+            data-fr="Fondé sur la confiance.">Built on trust.</h2>
+        <p class="section-sub"
+           data-en="Every design decision in Nguzo reflects one question: how do we help you transact safely with people you've never met?"
+           data-fr="Chaque décision de conception dans Nguzo reflète une question : comment vous aider à échanger en toute sécurité avec des personnes que vous n'avez jamais rencontrées ?">
+          Every design decision in Nguzo reflects one question: how do we help you transact safely with people you've never met?
+        </p>
+      </div>
+
+      <div class="trust-grid">
+        <article class="trust-item reveal">
+          <div class="trust-item__icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+          </div>
+          <h3 data-en="Trust Score" data-fr="Score de Confiance">Trust Score</h3>
+          <p data-en="Each account earns a behavioral reputation score over time — based on how you communicate, how you follow through, and whether you've had reports against you. It's earned, not bought."
+             data-fr="Chaque compte gagne un score de réputation comportementale dans le temps — basé sur votre façon de communiquer, de tenir vos engagements, et sur d'éventuels signalements. Il se mérite, il ne s'achète pas.">
+            Each account earns a behavioral reputation score over time — based on how you communicate, how you follow through, and whether you've had reports against you. It's earned, not bought.
+          </p>
+        </article>
+
+        <article class="trust-item reveal reveal-d1">
+          <div class="trust-item__icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <h3 data-en="Safety Guidelines" data-fr="Consignes de Sécurité">Safety Guidelines</h3>
+          <p data-en="Meet in public. Bring someone you trust. Verify the item before you pay. Avoid carrying large sums of cash. These are habits — not rules — and they matter."
+             data-fr="Rencontrez-vous en public. Amenez quelqu'un en qui vous avez confiance. Vérifiez l'article avant de payer. Évitez de transporter de grosses sommes en espèces. Ce sont des habitudes — pas des règles — et elles comptent.">
+            Meet in public. Bring someone you trust. Verify the item before you pay. Avoid carrying large sums of cash. These are habits — not rules — and they matter.
+          </p>
+        </article>
+
+        <article class="trust-item reveal reveal-d2">
+          <div class="trust-item__icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>
+          </div>
+          <h3 data-en="Report &amp; Moderation" data-fr="Signalement &amp; Modération">Report &amp; Moderation</h3>
+          <p data-en="Any listing, message, or account can be flagged. Reports are reviewed through a priority-based enforcement system — minor violations get a warning, serious ones are acted on immediately."
+             data-fr="Toute annonce, message ou compte peut être signalé. Les signalements sont traités selon un système d'application par priorité — les violations mineures donnent lieu à un avertissement, les graves sont traitées immédiatement.">
+            Any listing, message, or account can be flagged. Reports are reviewed through a priority-based enforcement system — minor violations get a warning, serious ones are acted on immediately.
+          </p>
+        </article>
+
+        <article class="trust-item reveal reveal-d3">
+          <div class="trust-item__icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          </div>
+          <h3 data-en="Your Data Stays Yours" data-fr="Vos Données Restent les Vôtres">Your Data Stays Yours</h3>
+          <p data-en="Nguzo processes no payments. We sell no data. The platform is governed by Burundian law."
+             data-fr="Nguzo ne traite aucun paiement. Nous ne vendons aucune donnée. La plateforme est régie par le droit burundais.">
+            Nguzo processes no payments. We sell no data. The platform is governed by Burundian law.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── ABOUT ────────────────────────────────────────────────── -->
+  <section class="section section-about" id="about" aria-labelledby="about-title">
+    <div class="container">
+      <div class="about-inner">
+        <div class="about-left reveal">
+          <p class="label" data-en="About" data-fr="À propos">About</p>
+          <h2 id="about-title"
+              data-en="Made in Burundi,&nbsp;for Burundi."
+              data-fr="Fait au Burundi,&nbsp;pour le Burundi.">Made in Burundi,&nbsp;for Burundi.</h2>
+          <p data-en="Nguzo was built around a simple observation: in Burundi, most commerce is local and personal. People buy from people they know, or people who live two streets away. The app makes that easier — it doesn't try to change how trade works, just make it visible."
+             data-fr="Nguzo a été construit autour d'une observation simple : au Burundi, la plupart des échanges sont locaux et personnels. Les gens achètent à des personnes qu'ils connaissent, ou qui habitent à deux rues de là. L'application facilite cela — elle ne cherche pas à changer le fonctionnement du commerce, juste à le rendre visible.">
+            Nguzo was built around a simple observation: in Burundi, most commerce is local and personal. People buy from people they know, or people who live two streets away. The app makes that easier — it doesn't try to change how trade works, just make it visible.
+          </p>
+          <p data-en="Available in French, Kirundi, Kiswahili and English. Version 1.0.0."
+             data-fr="Disponible en français, en kirundi, en kiswahili et en anglais. Version 1.0.0.">
+            Available in French, Kirundi, Kiswahili and English. Version 1.0.0.
+          </p>
+        </div>
+        <div class="about-right reveal reveal-d1">
+          <div class="stat-card">
+            <span class="stat-num" data-count="0">0</span>
+            <span class="stat-label" data-en="transaction fees" data-fr="frais de transaction">transaction fees</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-num" data-count="4">4</span>
+            <span class="stat-label" data-en="languages" data-fr="langues">languages</span>
+          </div>
+          <div class="stat-card stat-card--full">
+            <span class="stat-word">Local.</span>
+            <span class="stat-label" data-en="Your neighborhood. Always." data-fr="Votre quartier. Toujours.">Your neighborhood. Always.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CONTACT ───────────────────────────────────────────────── -->
+  <section class="section section-contact" id="contact" aria-labelledby="contact-title">
+    <div class="container">
+      <div class="contact-inner">
+
+        <div class="contact-left reveal">
+          <p class="label" data-en="Get the app" data-fr="Obtenir l'application">Get the app</p>
+          <h2 id="contact-title"
+              data-en="Ready to find something nearby?"
+              data-fr="Prêt à trouver quelque chose à proximité ?">Ready to find something nearby?</h2>
+          <p data-en="Download Nguzo and browse what people in your neighborhood are selling right now."
+             data-fr="Téléchargez Nguzo et parcourez ce que les gens de votre quartier vendent en ce moment.">
+            Download Nguzo and browse what people in your neighborhood are selling right now.
+          </p>
+          <a href="https://play.google.com/store/apps/details?id=co.nguzo.app" target="_blank" rel="noopener noreferrer"
+             class="btn btn-primary btn-lg"
+             aria-label="Download Nguzo on Google Play">
+            <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M3.18 23.76c.33.18.72.21 1.09.08l12.48-7.2-2.81-2.82L3.18 23.76z"/><path d="M22.2 10.39c-.43-.45-1.09-.6-1.69-.37L3.18.24C2.82.11 2.43.14 2.1.32L13.94 12z"/><path d="M2.1 23.68c.33.18.72.21 1.08.08L13.94 12 2.1.32C1.44.68 1 1.37 1 2.16v19.68c0 .79.44 1.48 1.1 1.84z"/><path d="M16.75 16.64l2.81 2.82 1.65-.95c.6-.35.96-.98.96-1.68v-1.53l-5.42 1.34z"/></svg>
+            <span data-en="Download on Google Play" data-fr="Télécharger sur Google Play">Download on Google Play</span>
+          </a>
+          <p class="contact-email">
+            <span data-en="Questions? " data-fr="Des questions ? ">Questions? </span>
+            <a href="mailto:support.nguzo@gmail.com" class="text-link">support.nguzo@gmail.com</a>
+          </p>
+        </div>
+
+        <!-- ONE form. ONE purpose. -->
+        <div class="contact-right reveal reveal-d1">
+          <form name="waitlist" method="POST" data-netlify="true" netlify-honeypot="bot-field"
+                id="waitlist-form" class="waitlist-form" novalidate>
+            <input type="hidden" name="form-name" value="waitlist" />
+            <p class="visually-hidden">
+              <label>Don't fill this out: <input name="bot-field" /></label>
+            </p>
+
+            <h3 data-en="Stay informed" data-fr="Restez informé">Stay informed</h3>
+            <p data-en="Leave your email to hear about new features and updates."
+               data-fr="Laissez votre e-mail pour être informé des nouveautés et mises à jour.">
+              Leave your email to hear about new features and updates.
+            </p>
+
+            <div class="field">
+              <label for="f-email" data-en="Email address" data-fr="Adresse e-mail">Email address</label>
+              <input type="email" id="f-email" name="email" required aria-required="true"
+                     autocomplete="email" placeholder="you@example.com" />
+            </div>
+            <div class="field">
+              <label for="f-hood"
+                     data-en="Your neighborhood (optional)"
+                     data-fr="Votre quartier (optionnel)">Your neighborhood (optional)</label>
+              <input type="text" id="f-hood" name="neighborhood"
+                     data-ph-en="e.g. Buyenzi, Rohero, Ngagara"
+                     data-ph-fr="ex. Buyenzi, Rohero, Ngagara"
+                     placeholder="e.g. Buyenzi, Rohero, Ngagara" />
+            </div>
+            <button type="submit" class="btn btn-primary btn-full">
+              <span data-en="Notify me" data-fr="M'informer">Notify me</span>
+            </button>
+
+            <div class="form-ok" id="form-ok" hidden role="status" aria-live="polite">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+              <span data-en="You're on the list." data-fr="Vous êtes sur la liste.">You're on the list.</span>
+            </div>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ==============================================================
+     FOOTER
+============================================================== -->
+<footer class="site-footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-top">
+
+      <!-- Brand -->
+      <div class="footer-brand">
+        <a href="/" class="logo footer-logo" aria-label="Nguzo">
+          <span class="logo__word">nguzo</span><span class="logo__dot">.</span>
+        </a>
+        <p data-en="Your neighborhood, your marketplace."
+           data-fr="Ton quartier, ton marché.">Your neighborhood, your marketplace.</p>
+        <p class="footer-location">Bujumbura, Burundi · 2026</p>
+      </div>
+
+      <!-- Product links -->
+      <nav class="footer-nav" aria-label="Product navigation">
+        <h4 data-en="Product" data-fr="Produit">Product</h4>
+        <ul role="list">
+          <li><a href="#how-it-works" data-en="How it works"  data-fr="Comment ça marche">How it works</a></li>
+          <li><a href="#trust"        data-en="Safety"        data-fr="Sécurité">Safety</a></li>
+          <li><a href="#the-app"      data-en="The App"       data-fr="L'Application">The App</a></li>
+          <li><a href="#about"        data-en="About"         data-fr="À propos">About</a></li>
+          <li><a href="https://play.google.com/store/apps/details?id=co.nguzo.app" target="_blank" rel="noopener noreferrer"
+                 data-en="Download"  data-fr="Télécharger">Download</a></li>
+        </ul>
+      </nav>
+
+      <!-- Legal links -->
+      <nav class="footer-nav" aria-label="Legal navigation">
+        <h4 data-en="Legal" data-fr="Légal">Legal</h4>
+        <ul role="list">
+          <li><a href="/terms"   data-en="Terms of Use"       data-fr="Conditions d'utilisation">Terms of Use</a></li>
+          <li><a href="/privacy" data-en="Privacy Policy"     data-fr="Politique de confidentialité">Privacy Policy</a></li>
+          <li>
+            <a href="mailto:nguzo.official@gmail.com" class="footer-legal-email">
+              <span data-en="Legal inquiries" data-fr="Requêtes légales">Legal inquiries</span>
+              <small>nguzo.official@gmail.com</small>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+    </div>
+
+    <div class="footer-bottom">
+      <p class="footer-copy" data-en="© 2026 Nguzo. All rights reserved." data-fr="© 2026 Nguzo. Tous droits réservés.">© 2026 Nguzo. All rights reserved.</p>
+      <div class="footer-bottom-right">
+        <div class="lang-switch" role="group" aria-label="Language / Langue">
+          <button class="lang-btn" id="btn-fr-f" aria-pressed="true">FR</button>
+          <span aria-hidden="true" class="lang-sep">|</span>
+          <button class="lang-btn" id="btn-en-f" aria-pressed="false">EN</button>
+        </div>
+        <div class="footer-social" aria-label="Social media">
+          <a href="https://www.instagram.com/nguzo_marketplace?igsh=dHk3d3pzeW5hcGFs" class="social-btn" aria-label="Nguzo on Instagram" rel="noopener noreferrer">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+          <a href="https://x.com/ngz_marketplace" class="social-btn" aria-label="Nguzo on X" rel="noopener noreferrer">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+          <a href="https://www.facebook.com/share/1HzvjEso9R/" class="social-btn" aria-label="Nguzo on Facebook" rel="noopener noreferrer">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js" defer></script>
+</body>
+</html>
+
+
+
+

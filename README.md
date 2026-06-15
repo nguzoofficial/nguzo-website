@@ -54,7 +54,7 @@ netlify dev
 ## Internationalization
 
 - The **website UI** is bilingual: **French (default)** and English.
-- The **app** itself supports four languages (French, Kirundi, Kiswahili,
+- The **app** itself supports four languages (French, Kirundi, Kiswahili, 
   English) — referenced in the About section and structured data, but the
   website only toggles FR/EN.
 - Translatable text uses `data-en` / `data-fr` attributes; placeholders use

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+  sitemap.xml — Nguzo
+  Replace nguzo.netlify.app with your actual domain before going live.
+  Update <lastmod> dates on each deploy.
+-->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <!-- Home — English (default) -->
+  <url>
+    <loc>https://nguzo.netlify.app/</loc>
+    <xhtml:link rel="alternate" hreflang="en"      href="https://nguzo.netlify.app/"/>
+    <xhtml:link rel="alternate" hreflang="fr"      href="https://nguzo.netlify.app/?lang=fr"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://nguzo.netlify.app/"/>
+    <lastmod>2026-04-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- Terms of Use -->
+  <url>
+    <loc>https://nguzo.netlify.app/terms</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nguzo.netlify.app/terms"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://nguzo.netlify.app/terms"/>
+    <lastmod>2026-04-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+  <!-- Privacy Policy -->
+  <url>
+    <loc>https://nguzo.netlify.app/privacy</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://nguzo.netlify.app/privacy"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://nguzo.netlify.app/privacy"/>
+    <lastmod>2026-04-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+</urlset> 
