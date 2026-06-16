@@ -643,19 +643,27 @@ h1,h2,h3,h4 { font-weight: var(--fw-bold); line-height: var(--lh-tight); }
 }
 
 /* Waitlist form */
-.waitlist-form {
+.contact-form {
   background: var(--c-white);
   border: 1px solid var(--c-border);
   border-radius: var(--r);
   padding: var(--sp-8);
   box-shadow: var(--sh-sm);
 }
-.waitlist-form h3 { font-size: var(--t-xl); margin-bottom: var(--sp-2); }
-.waitlist-form > p { font-size: var(--t-sm); color: var(--c-text-soft); margin-bottom: var(--sp-6); }
+.contact-form h3 { font-size: var(--t-xl); margin-bottom: var(--sp-2); }
+.contact-form > p { font-size: var(--t-sm); color: var(--c-text-soft); margin-bottom: var(--sp-6); }
+
+.field-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--sp-4);
+  margin-bottom: var(--sp-4);
+}
 
 .field { display: flex; flex-direction: column; gap: var(--sp-2); margin-bottom: var(--sp-4); }
 .field label { font-size: var(--t-sm); font-weight: var(--fw-semi); color: var(--c-text); }
-.field input {
+.field input,
+.field textarea {
   padding: .75rem 1rem;
   border: 1.5px solid var(--c-border);
   border-radius: var(--r-sm);
@@ -665,25 +673,40 @@ h1,h2,h3,h4 { font-weight: var(--fw-bold); line-height: var(--lh-tight); }
   min-height: 48px;
   transition: border-color var(--d-fast), box-shadow var(--d-fast);
 }
-.field input::placeholder { color: var(--c-text-muted); }
-.field input:focus {
+.field textarea {
+  min-height: 160px;
+  resize: vertical;
+}
+.field input::placeholder,
+.field textarea::placeholder { color: var(--c-text-muted); }
+.field input:focus,
+.field textarea:focus {
   outline: none;
   border-color: var(--c-accent);
   box-shadow: 0 0 0 3px rgba(232,149,32,.14);
 }
-.field input:user-invalid { border-color: #c94040; }
+.field input:user-invalid,
+.field textarea:user-invalid { border-color: #c94040; }
 
-.waitlist-form .btn-primary { margin-top: var(--sp-2); border-radius: var(--r-sm); }
+.contact-form .btn-primary { margin-top: var(--sp-2); border-radius: var(--r-sm); }
 
-.form-ok {
+.form-ok,
+.form-error {
   display: flex; align-items: center; gap: var(--sp-3);
   margin-top: var(--sp-4); padding: var(--sp-4);
-  background: var(--c-accent-pale);
   border-radius: var(--r-sm);
   font-size: var(--t-sm); font-weight: var(--fw-semi);
+}
+.form-ok {
+  background: var(--c-accent-pale);
   color: var(--c-accent-dim);
 }
-.form-ok[hidden] { display: none; }
+.form-error {
+  background: #FDECEC;
+  color: #C94040;
+}
+.form-ok[hidden],
+.form-error[hidden] { display: none; }
 
 /* ── 17. FOOTER ───────────────────────────────────────────────── */
 .site-footer {
@@ -928,6 +951,7 @@ h1,h2,h3,h4 { font-weight: var(--fw-bold); line-height: var(--lh-tight); }
   .stat-card     { flex: 1; min-width: 140px; }
 
   .contact-inner { grid-template-columns: 1fr; }
+  .field-row { grid-template-columns: 1fr; }
 
   .footer-top { grid-template-columns: 1fr 1fr; gap: var(--sp-10); }
   .footer-brand { grid-column: 1 / -1; }

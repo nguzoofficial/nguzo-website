@@ -226,22 +226,45 @@ $$('[data-en]').forEach(el => {
     else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
   });
 
-  /* ── 7. NETLIFY FORM ────────────────────────────────────── */
-  const form = $('#waitlist-form');
+  /* ── 7. CONTACT FORM ───────────────────────────────────── */
+  const form = $('#contact-form');
   const formOk = $('#form-ok');
+  const formError = $('#form-error');
   form?.addEventListener('submit', async e => {
     e.preventDefault();
+    if (!form) return;
+
+    formOk?.setAttribute('hidden', '');
+    formError?.setAttribute('hidden', '');
+
+    const payload = new URLSearchParams(new FormData(form)).toString();
+
+    const formData = new FormData(form);
+
+    formData.append('access_key', '9ec28a50-ef8f-4c58-b7c2-21e2bbdd7de8');
+
+    const jsonObject = Object.fromEntries(formData.entries());
+
+    const formDatajson = JSON.stringify(jsonObject);
+
     try {
-      const res = await fetch('/', {
+      const res = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams(new FormData(form)).toString(),
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: formDatajson
       });
-      if (!res.ok) throw new Error();
-      $$('.field, button[type="submit"]', form).forEach(el => el.style.display = 'none');
+
+      const json = await res.json();
+
+      if (!res.ok) throw new Error('Form submission failed');
+      form.querySelectorAll('.field, button[type="submit"]').forEach(el => { el.style.display = 'none'; });
       formOk?.removeAttribute('hidden');
-    } catch {
-      form.submit(); // fallback
+    } catch (error) {
+      console.error('Contact form submit error:', error);
+      formError?.removeAttribute('hidden');
     }
   });
 
