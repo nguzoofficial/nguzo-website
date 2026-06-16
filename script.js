@@ -237,14 +237,10 @@ $$('[data-en]').forEach(el => {
     formOk?.setAttribute('hidden', '');
     formError?.setAttribute('hidden', '');
 
-    const payload = new URLSearchParams(new FormData(form)).toString();
-
     const formData = new FormData(form);
-
     formData.append('access_key', '9ec28a50-ef8f-4c58-b7c2-21e2bbdd7de8');
 
     const jsonObject = Object.fromEntries(formData.entries());
-
     const formDatajson = JSON.stringify(jsonObject);
 
     try {
@@ -257,10 +253,8 @@ $$('[data-en]').forEach(el => {
         body: formDatajson
       });
 
-      const json = await res.json();
-
       if (!res.ok) throw new Error('Form submission failed');
-      form.querySelectorAll('.field, button[type="submit"]').forEach(el => { el.style.display = 'none'; });
+      form.reset();
       formOk?.removeAttribute('hidden');
     } catch (error) {
       console.error('Contact form submit error:', error);
