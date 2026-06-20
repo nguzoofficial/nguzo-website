@@ -39,7 +39,7 @@
   }
 
   /* ── 2. SCROLL REVEALS ──────────────────────────────────── */
-  const revealEls  = $$('.reveal, .reveal-d1, .reveal-d2, .reveal-d3, .reveal-fast, .reveal-stagger, .label');
+  const revealEls = $$('.reveal, .reveal-d1, .reveal-d2, .reveal-d3, .reveal-fast, .reveal-stagger, .label');
 
   const revealObs = new IntersectionObserver(
     entries => entries.forEach(e => {
@@ -120,22 +120,22 @@
     HTML.setAttribute('data-lang', lang);
 
     // Text nodes
-$$('[data-en]').forEach(el => {
-  const val = el.getAttribute(`data-${lang}`);
-  if (val === null) return;
+    $$('[data-en]').forEach(el => {
+      const val = el.getAttribute(`data-${lang}`);
+      if (val === null) return;
 
-  if (el.childElementCount === 0) {
-    // Normal element — just swap the text
-    el.textContent = val;
-  } else if ([...el.children].every(c => c.classList.contains('word'))) {
-    // word-split headline span — rebuild the inner spans with new text.
-    // Set transition-delay via CSSOM (not an inline style attribute) so it
-    // is not blocked by the Content-Security-Policy style-src directive.
-    const words = val.trim().split(/\s+/);
-    el.innerHTML = words.map(w => `<span class="word">${w}</span>`).join(' ');
-    [...el.children].forEach((span, i) => { span.style.transitionDelay = `${i * 85}ms`; });
-  }
-});
+      if (el.childElementCount === 0) {
+        // Normal element — just swap the text
+        el.textContent = val;
+      } else if ([...el.children].every(c => c.classList.contains('word'))) {
+        // word-split headline span — rebuild the inner spans with new text.
+        // Set transition-delay via CSSOM (not an inline style attribute) so it
+        // is not blocked by the Content-Security-Policy style-src directive.
+        const words = val.trim().split(/\s+/);
+        el.innerHTML = words.map(w => `<span class="word">${w}</span>`).join(' ');
+        [...el.children].forEach((span, i) => { span.style.transitionDelay = `${i * 85}ms`; });
+      }
+    });
 
     // Placeholder attributes
     $$('[data-ph-en]').forEach(el => {
@@ -151,7 +151,7 @@ $$('[data-en]').forEach(el => {
       btn.classList.toggle('active', match);
     });
 
-    try { localStorage.setItem(LANG_KEY, lang); } catch (_) {}
+    try { localStorage.setItem(LANG_KEY, lang); } catch (_) { }
   };
 
   // Bind all lang buttons (they share a naming convention: *-en-* / *-fr-*)
@@ -173,11 +173,11 @@ $$('[data-en]').forEach(el => {
   applyLang(initialLang);
 
   /* ── 6. MOBILE MENU ─────────────────────────────────────── */
-  const burger     = $('#burger');
-  const mobileNav  = $('#mobile-nav');
-  const closeBtn   = $('#mobile-close');
+  const burger = $('#burger');
+  const mobileNav = $('#mobile-nav');
+  const closeBtn = $('#mobile-close');
   const mobileLinks = $$('.mobile-nav__link');
-  const FOCUSABLE  = 'a[href], button:not([disabled]), input, [tabindex]:not([tabindex="-1"])';
+  const FOCUSABLE = 'a[href], button:not([disabled]), input, [tabindex]:not([tabindex="-1"])';
 
   const openMenu = () => {
     mobileNav.removeAttribute('hidden');
@@ -230,35 +230,118 @@ $$('[data-en]').forEach(el => {
   const form = $('#contact-form');
   const formOk = $('#form-ok');
   const formError = $('#form-error');
+  const emailInput = $('#f-email');
+  const emailFeedback = $('#email-feedback');
+
+  /* beginning of email validation logic with bouncer api hidden by cloudflare */ 
+
+  const EMAIL_VALIDATOR_URL = 'https://nguzo-email-verifier.clarkniyonzima.workers.dev';
+
+  const setEmailStatus = (type, message) => {
+    if (!emailFeedback || !emailInput) return;
+    emailFeedback.className = `email-feedback ${type}`.trim();
+    emailFeedback.textContent = message;
+    emailInput.classList.remove('is-valid', 'is-invalid');
+    if (type === 'success') emailInput.classList.add('is-valid');
+    if (type === 'error') emailInput.classList.add('is-invalid');
+  };
+
+  const getLocalizedMessage = (en, fr) => HTML.getAttribute('lang') === 'fr' ? fr : en;
+
   form?.addEventListener('submit', async e => {
     e.preventDefault();
     if (!form) return;
 
     formOk?.setAttribute('hidden', '');
     formError?.setAttribute('hidden', '');
+    setEmailStatus('', '');
 
-    const formData = new FormData(form);
-    formData.append('access_key', '9ec28a50-ef8f-4c58-b7c2-21e2bbdd7de8');
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
 
-    const jsonObject = Object.fromEntries(formData.entries());
-    const formDatajson = JSON.stringify(jsonObject);
+    const submitButton = form.querySelector('button[type="submit"]');
+    const emailValue = emailInput?.value.trim();
+    if (!emailValue) return;
+
+    submitButton?.setAttribute('disabled', '');
+    setEmailStatus('loading', getLocalizedMessage(
+      'Checking email address...',
+      'Vérification de l\'adresse e-mail...'
+    ));
+
+    let allowSubmit = true;
 
     try {
-      const res = await fetch('https://api.web3forms.com/submit', {
+      const response = await fetch(EMAIL_VALIDATOR_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: emailValue })
+      });
+
+      if (!response.ok) throw new Error('Validation request failed');
+      const data = await response.json();
+
+      const status = data.status || data.result ||
+        (data.valid === true ? 'valid' : data.valid === false ? 'invalid' : undefined);
+      const isValid = status === 'valid' || status === 'deliverable' || data.valid === true;
+      const isInvalid = status === 'invalid' || status === 'undeliverable' || data.valid === false;
+
+      if (isValid) {
+        setEmailStatus('success', getLocalizedMessage(
+          'This email appears to exist and looks valid.',
+          'Cette adresse e-mail existe et semble valide.'
+        ));
+      } else if (isInvalid) {
+        allowSubmit = false;
+        setEmailStatus('error', getLocalizedMessage(
+          'This email address does not appear to exist. Please check for typos.',
+          'Cette adresse e-mail n’existe pas. Vérifiez les fautes de frappe.'
+        ));
+        emailInput?.focus();
+      } else {
+        setEmailStatus('warning', getLocalizedMessage(
+          'Unable to verify the email right now. The message will still be sent.',
+          'Impossible de vérifier l’adresse pour le moment. Le message sera quand même envoyé.'
+        ));
+      }
+    } catch (error) {
+      setEmailStatus('error', getLocalizedMessage(
+        'Unable to check the email right now. Please try again.',
+        'Impossible de vérifier l’adresse e-mail pour le moment. Veuillez réessayer.'
+      ));
+      allowSubmit = false;
+    }
+
+    if (!allowSubmit) {
+      submitButton?.removeAttribute('disabled');
+      return;
+    }
+
+    /* End of email validation logic and beginning of form submission with web3forms */
+
+    const formData = new FormData(form);
+
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           'Accept': 'application/json'
         },
-        body: formDatajson
+        body: JSON.stringify(Object.fromEntries(formData.entries()))
       });
 
-      if (!res.ok) throw new Error('Form submission failed');
+      if (!response.ok) throw new Error('Form submission failed');
       form.reset();
+      setEmailStatus('', '');
       formOk?.removeAttribute('hidden');
     } catch (error) {
       console.error('Contact form submit error:', error);
       formError?.removeAttribute('hidden');
+    } finally {
+      submitButton?.removeAttribute('disabled');
     }
   });
 

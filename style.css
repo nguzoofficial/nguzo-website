@@ -688,15 +688,19 @@ h1,h2,h3,h4 { font-weight: var(--fw-bold); line-height: var(--lh-tight); }
 .field input:user-invalid,
 .field textarea:user-invalid { border-color: #c94040; }
 
-.contact-form .btn-primary { margin-top: var(--sp-2); border-radius: var(--r-sm); }
+  .email-feedback {
+    margin-top: var(--sp-3);
+    font-size: var(--t-sm);
+    line-height: var(--lh-snug);
+    min-height: 1.5em;
+    color: var(--c-text-muted);
+    transition: color var(--d-fast);
+  }
+  .email-feedback.loading { color: var(--c-text); }
+  .email-feedback.success { color: var(--c-accent); }
+  .email-feedback.error { color: #C94040; }
+  .email-feedback.warning { color: #8A857E; }
 
-.form-ok,
-.form-error {
-  display: flex; align-items: center; gap: var(--sp-3);
-  margin-top: var(--sp-4); padding: var(--sp-4);
-  border-radius: var(--r-sm);
-  font-size: var(--t-sm); font-weight: var(--fw-semi);
-}
 .form-ok {
   background: var(--c-accent-pale);
   color: var(--c-accent-dim);
