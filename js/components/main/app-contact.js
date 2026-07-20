@@ -95,7 +95,7 @@ class AppContact extends HTMLElement {
             </div>
 
         </div>
-    </div>
+    </div>  
 </section>
         `
     }
