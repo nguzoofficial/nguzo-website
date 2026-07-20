@@ -74,7 +74,7 @@ class AppHeader extends HTMLElement {
 
 
     
-    `;
+    `
   }
 }
 
