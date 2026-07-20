@@ -68,48 +68,6 @@
   <!-- ── HOW IT WORKS ─────────────────────────────────────────── -->
   <app-how_it_works></app-how_it_works>
 
-  <!-- ── APP SHOWCASE (dark) ──────────────────────────────────── -->
-  <section class="section section-dark section-app" id="the-app" aria-labelledby="app-title">
-    <div class="container">
-      <div class="section-header section-header--light reveal">
-        <p class="label"
-           data-en="The App"
-           data-fr="L'Application">The App</p>
-        <h2 id="app-title"
-            data-en="Everything you need, nothing you don't."
-            data-fr="Tout ce qu'il faut, rien de superflu.">Everything you need, nothing you don't.</h2>
-      </div>
-
-      <div class="app-screens">
-        <figure class="app-screen reveal">
-          <div class="app-screen__frame">
-            <img src="images/app-feed.png"
-                 alt="Nguzo feed screen: list of nearby listings in Buyenzi with prices in BIF"
-                 width="280" height="560" loading="lazy" decoding="async" />
-          </div>
-          <figcaption data-en="Nearby listings" data-fr="Annonces à proximité">Nearby listings</figcaption>
-        </figure>
-
-        <figure class="app-screen app-screen--featured reveal reveal-d1">
-          <div class="app-screen__frame">
-            <img src="images/app-listing.png"
-                 alt="Listing detail: iron for 80,000 BIF in Buyenzi Kanzigiri, with chat button"
-                 width="280" height="560" loading="lazy" decoding="async" />
-          </div>
-          <figcaption data-en="Listing detail — the only action is to message" data-fr="Détail d'annonce — la seule action est de discuter">Listing detail — the only action is to message</figcaption>
-        </figure>
-
-        <figure class="app-screen reveal reveal-d2">
-          <div class="app-screen__frame">
-            <img src="images/app-profile.png"
-                 alt="User profile showing active listings and create listing button"
-                 width="280" height="560" loading="lazy" decoding="async" />
-          </div>
-          <figcaption data-en="Your listings" data-fr="Vos annonces">Your listings</figcaption>
-        </figure>
-      </div>
-    </div>
-  </section>
 
   <!-- ── TRUST & SAFETY ───────────────────────────────────────── -->
   <section class="section section-trust" id="trust" aria-labelledby="trust-title">
