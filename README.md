@@ -10,7 +10,19 @@ and is deployed on Netlify.
 ## Tech stack
 
 - Plain **HTML, CSS, and vanilla JavaScript** — no build step, no framework.
+
+- For matters of scalability, webcomponents were used. They're in the components folder.
+  For formatting, use the format selection as html extension (but you have  to select the code first, right click and then click on format selection  as  html) and for syntax highlighting, use  the es6-string-html and for autocompletion, add 
+  "
+    "emmet.includeLanguages": {
+      "javascript": "html"
+    },
+    "emmet.triggerExpansionOnTab": true
+  "
+  in Preferences: open user settings (json)
+
 - **Netlify** for hosting, redirects, security headers, and form handling.
+
 - **Plus Jakarta Sans** loaded from Google Fonts.
 
 ## Project structure
