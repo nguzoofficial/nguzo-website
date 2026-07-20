@@ -1,0 +1,47 @@
+/* ── 12. HOW IT WORKS ────────────────────────────────────────── */
+.section-hiw { background: var(--c-surface); }
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--sp-6);
+}
+
+.step {
+  padding: var(--sp-8);
+  background: var(--c-white);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r);
+  position: relative;
+  transition: transform var(--d-med) var(--ease-out),
+              box-shadow var(--d-med) var(--ease-out);
+}
+.step:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--sh-md);
+}
+
+.step__num {
+  font-size: clamp(3.5rem, 7vw, 5rem);
+  font-weight: var(--fw-bold);
+  color: var(--c-accent);
+  line-height: 1;
+  letter-spacing: -.05em;
+  margin-bottom: var(--sp-5);
+  opacity: .22;
+  transition: opacity var(--d-med);
+  font-variant-numeric: tabular-nums;
+}
+.step:hover .step__num { opacity: .55; }
+
+.step__icon {
+  width: 44px; height: 44px;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--c-accent-pale);
+  border-radius: var(--r-sm);
+  color: var(--c-accent);
+  margin-bottom: var(--sp-4);
+}
+.step__body h3 { font-size: var(--t-xl); margin-bottom: var(--sp-3); }
+.step__body p  { font-size: var(--t-base); color: var(--c-text-soft); line-height: var(--lh-base); }
+

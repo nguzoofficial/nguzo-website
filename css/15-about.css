@@ -1,0 +1,50 @@
+/* ── 15. ABOUT ────────────────────────────────────────────────── */
+.about-inner {
+  display: grid;
+  grid-template-columns: 1fr 360px;
+  gap: clamp(var(--sp-12), 6vw, var(--sp-20));
+  align-items: start;
+}
+
+.about-left h2 { font-size: var(--t-3xl); margin-bottom: var(--sp-6); }
+.about-left p  { color: var(--c-text-soft); line-height: var(--lh-base); margin-bottom: var(--sp-4); }
+.about-left p:last-child { margin-bottom: 0; }
+
+/* Stat cards */
+.about-right {
+  display: flex; flex-direction: column; gap: var(--sp-4);
+  position: sticky; top: calc(var(--nav-h) + var(--sp-8));
+}
+.stat-card {
+  padding: var(--sp-6) var(--sp-8);
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r);
+  display: flex; flex-direction: column; gap: var(--sp-2);
+  transition: transform var(--d-med) var(--ease-out);
+}
+.stat-card:hover { transform: translateX(4px); }
+.stat-card--full { background: var(--c-accent-pale); border-color: rgba(232,149,32,.20); }
+
+.stat-num {
+  font-size: var(--t-3xl);
+  font-weight: var(--fw-bold);
+  color: var(--c-accent);
+  letter-spacing: -.04em;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+.stat-word {
+  font-size: var(--t-3xl);
+  font-weight: var(--fw-bold);
+  color: var(--c-accent);
+  letter-spacing: -.03em;
+  line-height: 1;
+  font-style: italic;
+}
+.stat-label {
+  font-size: var(--t-sm);
+  color: var(--c-text-soft);
+  font-weight: var(--fw-semi);
+}
+

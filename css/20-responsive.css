@@ -1,0 +1,61 @@
+/* ── 20. RESPONSIVE ──────────────────────────────────────────── */
+
+/* Tablet portrait and below (≤ 768px) */
+@media (max-width: 768px) {
+  .nav__links { display: none; }
+  .nav__right .btn-primary { display: none; }
+  .nav__right .lang-switch { display: none; }
+  .burger { display: flex; }
+
+  .hero__inner {
+    grid-template-columns: 1fr;
+    padding-block: var(--sp-12) var(--sp-8);
+    text-align: center;
+  }
+  .hero__text { max-width: 100%; }
+  .hero__sub { margin-inline: auto; }
+  .hero__actions { justify-content: center; }
+  .hero__phones {
+    order: -1;
+    height: 340px; width: 100%;
+  }
+  .phone--back  { width: 160px; }
+  .phone--front { width: 175px; }
+
+  .steps { grid-template-columns: 1fr; }
+  .trust-grid { grid-template-columns: 1fr; }
+  .app-screens { grid-template-columns: 1fr; }
+  .app-screen--featured { transform: none; }
+  .app-screen:not(.app-screen--featured) { display: none; }
+
+  .about-inner   { grid-template-columns: 1fr; }
+  .about-right   { position: static; }
+  .about-right   { flex-direction: row; flex-wrap: wrap; }
+  .stat-card     { flex: 1; min-width: 140px; }
+
+  .contact-inner { grid-template-columns: 1fr; }
+  .field-row { grid-template-columns: 1fr; }
+
+  .footer-top { grid-template-columns: 1fr 1fr; gap: var(--sp-10); }
+  .footer-brand { grid-column: 1 / -1; }
+  .footer-bottom { flex-direction: column; align-items: flex-start; }
+
+  /* Legal pages */
+  .legal-body { grid-template-columns: 1fr; }
+  .legal-toc  { display: none; }
+}
+
+/* Small phones (≤ 480px) */
+@media (max-width: 480px) {
+  .hero__phones { display: none; }
+  .steps { gap: var(--sp-4); }
+  .footer-top { grid-template-columns: 1fr; }
+  .footer-bottom-right { flex-direction: column; align-items: flex-start; gap: var(--sp-3); }
+  .contact-left .btn-lg { width: 100%; justify-content: center; }
+  .about-right { flex-direction: column; }
+}
+
+/* Large screens (≥ 1280px) */
+@media (min-width: 1280px) {
+  .hero__inner { gap: var(--sp-24); }
+}

@@ -1,0 +1,14 @@
+/* ── 06. LOGO ────────────────────────────────────────────────── */
+.logo {
+  display: inline-flex;
+  align-items: baseline;
+  font-size: 1.5rem;
+  font-weight: var(--fw-bold);
+  letter-spacing: -.025em;
+  flex-shrink: 0;
+  transition: opacity var(--d-fast);
+}
+.logo:hover { opacity: .8; }
+.logo__word { color: var(--c-text); }
+.logo__dot  { color: var(--c-accent); }
+

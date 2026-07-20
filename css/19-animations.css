@@ -1,0 +1,70 @@
+/* ── 19. ANIMATIONS ──────────────────────────────────────────── */
+@media (prefers-reduced-motion: no-preference) {
+
+  /* --- Reveal on scroll (base state) --- */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity var(--d-slow) var(--ease-out),
+                transform var(--d-slow) var(--ease-out);
+  }
+  .reveal.in-view            { opacity: 1; transform: none; }
+  .reveal-d1.in-view         { transition-delay: 100ms; }
+  .reveal-d2.in-view         { transition-delay: 200ms; }
+  .reveal-d3.in-view         { transition-delay: 300ms; }
+
+  /* Fast reveal for small elements */
+  .reveal-fast {
+    opacity: 0; transform: translateY(10px);
+    transition: opacity 400ms var(--ease-out), transform 400ms var(--ease-out);
+  }
+  .reveal-fast.in-view { opacity: 1; transform: none; }
+
+  /* --- Hero headline word animation --- */
+  .word-line .word {
+    display: inline-block;
+    opacity: 0; transform: translateY(105%);
+    transition: opacity 600ms var(--ease-out), transform 600ms var(--ease-out);
+  }
+  .hero__h1.revealed .word { opacity: 1; transform: none; }
+
+  /* Hero sub + actions */
+  .reveal-stagger {
+    opacity: 0; transform: translateY(18px);
+    transition: opacity 560ms var(--ease-out), transform 560ms var(--ease-out);
+  }
+  .reveal-stagger.in-view { opacity: 1; transform: none; }
+
+  /* --- Phone float --- */
+  .phone--front { animation: float-a 9s ease-in-out infinite; }
+  .phone--back  { animation: float-b 11s ease-in-out infinite; }
+
+  @keyframes float-a {
+    0%,100% { transform: rotate(-4deg) translateY(0); }
+    50%      { transform: rotate(-4deg) translateY(-12px); }
+  }
+  @keyframes float-b {
+    0%,100% { transform: rotate(5deg) translateY(-6px); }
+    50%      { transform: rotate(5deg) translateY(6px); }
+  }
+
+  /* --- Nav scrolled state transition is already in CSS --- */
+
+  /* --- Label letter-spacing on reveal --- */
+  .label {
+    letter-spacing: .02em;
+    opacity: 0;
+    transition: letter-spacing 500ms var(--ease-out), opacity 400ms var(--ease-out);
+  }
+  .label.in-view { letter-spacing: .14em; opacity: 1; }
+  /* Hero label is immediately visible */
+  .hero .label { opacity: 1; letter-spacing: .14em; }
+
+} /* end prefers-reduced-motion: no-preference */
+
+/* Default state when motion is reduced — everything visible */
+@media (prefers-reduced-motion: reduce) {
+  .reveal, .reveal-fast, .reveal-stagger, .label { opacity: 1 !important; transform: none !important; }
+  .word-line .word { opacity: 1 !important; transform: none !important; }
+}
+

@@ -1,0 +1,16 @@
+/* ── 08. LANGUAGE SWITCH ─────────────────────────────────────── */
+.lang-switch { display: flex; align-items: center; gap: var(--sp-1); }
+.lang-sep { color: var(--c-border); user-select: none; font-size: var(--t-xs); }
+.lang-btn {
+  font-size: var(--t-xs); font-weight: var(--fw-semi);
+  letter-spacing: .06em; padding: var(--sp-1) var(--sp-2);
+  border-radius: var(--r-sm); min-height: 32px;
+  color: var(--c-text-muted);
+  transition: color var(--d-fast), background var(--d-fast);
+}
+.lang-btn:hover { color: var(--c-text); }
+.lang-btn[aria-pressed="true"] {
+  color: var(--c-accent);
+  background: var(--c-accent-pale);
+}
+

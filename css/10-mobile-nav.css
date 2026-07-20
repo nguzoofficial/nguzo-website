@@ -1,0 +1,35 @@
+/* ── 10. MOBILE NAV ──────────────────────────────────────────── */
+.mobile-nav {
+  position: fixed; inset: 0; z-index: 200; /* above .site-header (100) */
+  background: var(--c-bg);
+}
+.mobile-nav[hidden] { display: none; }
+
+.mobile-nav__panel {
+  display: flex; flex-direction: column;
+  height: 100%; padding: var(--sp-6) var(--pad-x);
+}
+.mobile-nav__top {
+  display: flex; align-items: center;
+  justify-content: space-between; margin-bottom: var(--sp-10);
+}
+.mobile-nav__close {
+  width: 44px; height: 44px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: var(--r-sm); color: var(--c-text);
+  transition: background var(--d-fast);
+}
+.mobile-nav__close:hover { background: var(--c-surface); }
+.mobile-nav__links { flex: 1; display: flex; flex-direction: column; }
+.mobile-nav__link {
+  display: block; padding: var(--sp-5) 0;
+  font-size: var(--t-2xl); font-weight: var(--fw-bold);
+  color: var(--c-text); border-bottom: 1px solid var(--c-border);
+  transition: color var(--d-fast), padding-left var(--d-fast);
+}
+.mobile-nav__link:hover { color: var(--c-accent); padding-left: var(--sp-3); }
+.mobile-nav__foot {
+  display: flex; align-items: center;
+  justify-content: space-between; padding-top: var(--sp-8); flex-wrap: wrap; gap: var(--sp-4);
+}
+
